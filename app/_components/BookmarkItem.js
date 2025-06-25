@@ -34,9 +34,9 @@ function BookmarkItem({ bookmark }) {
       <Link
         className='flex justify-start gap-3 items-center max-w-[28rem] text-sm sm_2:text-base cursor-pointer no-underline m-[0.5rem] p-[0.5rem] sm_2:p-[0.6rem] rounded-[7px] border border-slate-300 dark:shadow-accent-600 hover:border-accent-600 hover:shadow-accent-600 hover:shadow-lg transition-all duration-300'
         prefetch={false}
-        href={`http://localhost:3000/parklist/${parkId}/?lat=${
-          position?.lat ?? 0
-        }&lng=${position?.lng ?? 0}`}
+        href={`/parklist/${parkId}/?lat=${position?.lat ?? 0}&lng=${
+          position?.lng ?? 0
+        }`}
       >
         <span className='w-[6rem] break-words'>{parkName}</span>
         <span className='min-w-[6rem]'>{formatDate(date)}</span>
