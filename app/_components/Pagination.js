@@ -46,7 +46,7 @@ function Pagination({ count }) {
 
       <div className='flex justify-center gap-[0.6rem]'>
         <button
-          className='flex items-center gap-[0.4rem] transition-all duration-[0.3s] px-[1rem] py-[0.3rem] rounded-md border-[bg-accent-200] hover:bg-accent-600 hover:text-primary-50 disabled:text-gray-500 disabled:hover:bg-transparent'
+          className='flex items-center gap-[0.4rem] transition-all duration-[0.3s] px-[1rem] py-[0.3rem] rounded-md border border-accent-200 hover:bg-accent-600 hover:text-primary-50 disabled:text-gray-500 disabled:hover:bg-transparent'
           onClick={prevPage}
           disabled={currentPage === 1}
         >
@@ -55,7 +55,7 @@ function Pagination({ count }) {
         </button>
 
         <button
-          className='flex items-center gap-[0.4rem] transition-all duration-[0.3s] px-[1rem] py-[0.3rem] rounded-md border-[bg-accent-200] hover:bg-accent-600 hover:text-primary-50'
+          className='flex items-center gap-[0.4rem] transition-all duration-300 px-[1rem] py-[0.3rem] rounded-md border border-accent-200 hover:bg-accent-600 hover:text-primary-50 disabled:text-gray-500 disabled:hover:bg-transparent'
           onClick={nextPage}
           disabled={currentPage === pageCount}
         >
