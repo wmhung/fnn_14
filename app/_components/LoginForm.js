@@ -48,7 +48,7 @@ function LoginForm() {
   };
 
   return (
-    <div className='px-9 py-7 bg-primary-200 rounded-sm shadow-md'>
+    <div className='px-9 py-7 bg-accent-50 rounded-sm shadow-2xl border dark:bg-slate-800 dark:border-slate-100'>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className='flex flex-col gap-1 py-2'>
           <input
@@ -81,19 +81,19 @@ function LoginForm() {
         <button
           type='submit'
           disabled={isSubmitting}
-          className='flex justify-center items-center text-base aspect-[6/1] bg-primary-800 text-slate-50 w-60 mt-5 rounded-sm shadow-md disabled:opacity-60'
+          className='flex justify-center items-center text-base aspect-[6/1] bg-accent-500 text-slate-50 w-60 mt-5 rounded-sm shadow-md disabled:opacity-60 hover:bg-accent-300'
         >
           {isSubmitting ? 'Logging in...' : 'Continue with email'}
         </button>
 
         <Link
           href='/register'
-          className='flex justify-center items-center text-base aspect-[6/1] bg-primary-300 text-slate-50 w-60 mt-2 rounded-sm shadow-md'
+          className='flex justify-center items-center text-base aspect-[6/1] bg-accent-800 text-slate-50 w-60 mt-3 rounded-sm shadow-md dark:bg-accent-900 hover:bg-accent-500 dark:hover:bg-accent-500'
         >
           Sign up
         </Link>
 
-        <div className='flex border-t-[1px] border-primary-900 mt-5' />
+        <div className='flex border-t-[1px] border-slate-600 dark:border-accent-600 mt-5' />
       </form>
 
       <SignInButton />
