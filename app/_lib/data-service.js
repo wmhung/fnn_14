@@ -9,9 +9,6 @@ import { PAGE_SIZE } from '../_lib/utils/constants';
 // GET
 
 export async function getPark(id) {
-  // const session = await auth();
-  // if (!session) throw new Error('You must be logged in');
-
   const { data, error } = await supabase
     .from('parklist')
     .select('*')
@@ -19,8 +16,8 @@ export async function getPark(id) {
     .single();
 
   if (error) {
-    console.error(error);
-    notFound();
+    console.error('[getPark error]', error);
+    return null;
   }
 
   return data;
