@@ -48,7 +48,7 @@ function LoginForm() {
   };
 
   return (
-    <div className='px-9 py-7 bg-accent-50 rounded-sm shadow-2xl border dark:bg-slate-800 dark:border-slate-100'>
+    <div className='px-9 py-7 bg-accent-100 rounded-sm shadow-2xl dark:border dark:bg-slate-700 dark:border-slate-100'>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className='flex flex-col gap-1 py-2'>
           <input
