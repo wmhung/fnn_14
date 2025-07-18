@@ -23,7 +23,7 @@ export default function ClientLayoutWrapper({ children, email }) {
   return (
     <div className='flex flex-col md:flex-row w-full h-full'>
       {/* Desktop layout */}
-      <section className='hidden md:flex flex-col max-w-[28rem] lg:mx-auto'>
+      <section className='relative hidden md:flex flex-col max-w-[28rem] lg:mx-auto'>
         {children}
       </section>
 
