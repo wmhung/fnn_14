@@ -9,7 +9,7 @@ function AppNavClient() {
   const pathname = usePathname(); // Get the current route dynamically
 
   return (
-    <nav className='mx-auto min-w-[28rem] px-1 mb-2 md:mb-0 text-sm font-bold'>
+    <nav className='mx-auto min-w-[23rem] px-1 mb-2 md:mb-0 text-xs font-bold'>
       <div className='flex justify-center'>
         <ul className='hidden md:flex justify-center h-10'>
           <li className='flex' dir='ltr'>
