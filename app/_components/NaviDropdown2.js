@@ -44,7 +44,7 @@ export default function NaviDropdown2({ fullName, avatar }) {
       </button>
 
       {open && (
-        <div className='fixed w-full h-full bg-[rgba(0,0,0,0.7)] z-3 left-0 top-0'>
+        <div className='fixed w-full h-full bg-[rgba(0,0,0,0.7)] z-20 left-0 top-0'>
           <ul
             ref={dropdownRef}
             className='absolute top-0 right-0 pt-[10rem] w-[25%] h-full bg-slate-200 text-slate-700 text-xl z-10'
