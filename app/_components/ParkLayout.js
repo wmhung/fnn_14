@@ -14,7 +14,7 @@ export default function ParkLayout({ data }) {
     <ParkDataProvider value={{ parks: parkLists, sort, query, page }}>
       <AppNav />
       <ParkLists />
-      <footer>
+      <footer className='flex flex-col'>
         <Pagination count={count} />
       </footer>
     </ParkDataProvider>
