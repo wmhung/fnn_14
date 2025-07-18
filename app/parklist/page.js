@@ -31,11 +31,7 @@ export default async function Page({ searchParams }) {
     email,
   });
 
-  const { data: bookmarkLists } = await getBookmarkLists({
-    email,
-    page,
-    query,
-  });
+  const { data: bookmarkLists } = await getBookmarkLists({ email });
 
   const data = { parkLists, bookmarkLists, sort, query, page, count };
 
@@ -43,7 +39,7 @@ export default async function Page({ searchParams }) {
     <MobilePanelProvider>
       <ParkDataProvider value={data}>
         {/* Desktop */}
-        <div className='hidden md:block'>
+        <div className='absolute max-w-[23rem] max-h-[82%] py-3 top-[5rem] left-[1rem] bottom-[5px] hidden md:block z-10 rounded-lg shadow-xl bg-slate-50 dark:bg-slate-800'>
           <ParkLayout data={data} />
         </div>
         {/* Mobile */}

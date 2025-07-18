@@ -74,30 +74,34 @@ export default function Map() {
   const mapRef = useRef(null);
   // ZoomHandler component for handling map zoom events.
   const ZoomHandler = () => {
+    // Use Leaflet's useMap hook.
     const map = useMap();
-    const coordinates = aiMarker?.coordinates;
-
+    // Function to fly map to given coordinates.
+    const flyToMarker = (coordinates, zoom) => {
+      if (coordinates && typeof coordinates[0] !== 'undefined') {
+        map.flyTo(coordinates, zoom, {
+          animate: true,
+          duration: 1.5,
+        });
+      }
+    };
     useMapEvents({
       zoomend: () => {
         setLoading(false);
       },
     });
-
+    // useEffect to trigger the map fly when aiMarker changes.
     useEffect(() => {
-      if (!coordinates) return;
-
-      const flyToMarker = (coords, zoom) => {
-        if (coords && typeof coords[0] !== 'undefined') {
-          map.flyTo(coords, zoom, {
-            animate: true,
-            duration: 1.5,
-          });
+      if (aiMarker) {
+        if (
+          aiMarker.coordinates &&
+          typeof aiMarker.coordinates[0] !== 'undefined'
+        ) {
+          flyToMarker(aiMarker.coordinates, 16);
         }
-      };
-
-      flyToMarker(coordinates, 16);
-    }, [coordinates, map]);
-
+      }
+    }, [aiMarker]);
+    //Return null as we're not rendering anything in the DOM.
     return null;
   };
 
@@ -136,14 +140,15 @@ export default function Map() {
   }
 
   return (
-    <div className='flex-1 relative h-full w-lg rounded-[10px_10px_10px_10px]'>
+    <div className='flex-1 relative h-full w-lg rounded-lg'>
       {/* shadow-[0px_5px_10px_0px_#adb5bd] */}
       {loading && <Loader />}
-
+      {/* mobile_map:h-[83vh] mobile_map_sm_3:h-[68vh] */}
       <MapContainer
         center={mapPosition}
         zoom={15}
-        className='h-[80vh] rounded-[10px_10px_10px_10px] z-0 mobile_map:h-[83vh] mobile_map_sm_3:h-[68vh] md:h-[83vh] shadow-lg'
+        zoomControl={false}
+        className='h-[90vh] z-0 md:h-[83vh] shadow-lg rounded-lg'
         style={{ width: '100%', zIndex: 0 }}
       >
         <TileLayer
@@ -183,11 +188,11 @@ export default function Map() {
       </MapContainer>
 
       {/* Current position button */}
-      <div className='absolute top-5 right-5 z-30'>
+      <div className='absolute top-5 right-5 z-10'>
         <button
           type='position'
           onClick={handleGetPosition}
-          className='p-2 rounded-full bg-accent-600 text-slate-50 hover:text-accent-600 hover:bg-slate-50 shadow-xl z-40 '
+          className='p-2 rounded-full bg-accent-600 text-slate-50 hover:text-accent-600 hover:bg-slate-50 shadow-xl z-40'
         >
           {isLoadingPosition ? (
             <span className='text-sm text-slate-50'>...</span>
@@ -197,16 +202,16 @@ export default function Map() {
         </button>
       </div>
 
+      {submittedQuestion && (
+        <div className='absolute top-[5rem] w-full flex justify-center z-30'>
+          <h1 className='text-xl font-bold text-slate-50 p-2 bg-accent-600 rounded-md shadow-xl'>
+            {submittedQuestion}
+          </h1>
+        </div>
+      )}
       {/* Input and AI Submit */}
-      <div className='absolute top-5 left-0 w-[90%] sm:w-full z-30 px-4'>
-        <div className='flex justify-center items-center'>
-          {submittedQuestion && (
-            <div className='absolute top-[5rem] w-full flex justify-center z-30'>
-              <h1 className='text-xl font-bold text-slate-50 p-2 bg-accent-600 rounded-md shadow-xl'>
-                {submittedQuestion}
-              </h1>
-            </div>
-          )}
+      <div className='absolute top-5 left-0 2xs:w-[85%] z-30 flex justify-center md:justify-start'>
+        <div className='w-[88%] max-w-[23rem] ml-[0.5rem] relative shadow-xl md:ml-[1rem]'>
           <input
             type='text'
             value={inputValue}
@@ -217,11 +222,12 @@ export default function Map() {
               setAiMarker(null);
             }}
             placeholder='Ask me for recommendation...'
-            className='flex-grow max-w-[60%] px-2 py-2 border rounded-sm shadow-xl'
+            className='w-full px-4 py-3 border rounded-xl'
           />
           <button
+            type='button'
             onClick={handleSubmit}
-            className='px-3 py-2 ml-2 bg-accent-600 text-slate-50 rounded-sm shadow-xl hover:text-accent-600 hover:bg-slate-50'
+            className='absolute top-1 bottom-1 right-2 px-3  bg-accent-600 text-slate-50 rounded-xl shadow-xl hover:text-accent-50 hover:bg-accent-300'
           >
             GO
           </button>

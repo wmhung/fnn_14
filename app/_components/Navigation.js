@@ -11,7 +11,7 @@ export default async function Navigation() {
   // console.log(user);
 
   return (
-    <nav className='z-10 text-lg hidden md:block'>
+    <nav className='text-lg hidden md:block'>
       <ul className='flex gap-7 items-center'>
         <li>
           <Link

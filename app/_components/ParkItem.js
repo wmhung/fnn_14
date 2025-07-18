@@ -72,13 +72,13 @@ function ParkItem({ park }) {
   return (
     <>
       <Link
-        className='flex justify-start gap-3 items-center max-w-[28rem] text-sm sm_2:text-base cursor-pointer no-underline m-[0.5rem] p-[0.5rem] sm_2:p-[0.6rem] rounded-[7px] border border-slate-300  dark:shadow-accent-600 hover:border-accent-600 hover:shadow-accent-600 hover:shadow-lg transition-all duration-300'
+        className='flex justify-start items-center gap-3 max-w-[22rem] text-sm cursor-pointer no-underline m-[5px] p-[0.5rem] sm_2:p-[0.3rem] rounded-[7px] border border-slate-300  dark:shadow-accent-600 hover:border-accent-600 hover:shadow-accent-600 hover:shadow-lg transition-all duration-300'
         prefetch={false}
         href={`parklist/${id}/?lat=${position?.lat ?? 0}&lng=${
           position?.lng ?? 0
         }`}
       >
-        <span className='w-[5rem] break-words'>{parkName}</span>
+        <span className='w-[6rem] break-words'>{parkName}</span>
         <span className='max-w-[6rem]'>{formatDate(date)}</span>
         <span className='max-w-[3rem]'>{starRating} ⭐️</span>
         <button

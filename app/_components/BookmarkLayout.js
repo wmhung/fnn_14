@@ -14,11 +14,13 @@ export default function BookmarkLayout({
 }) {
   return (
     <ParkDataProvider value={{ bookmarks, sort, query, page }}>
-      <AppNav />
-      <BookmarkList />
-      <footer>
-        <Pagination count={count} />
-      </footer>
+      <div className='absolute max-w-[23rem] max-h-[82%] py-3 top-[5rem] left-[1rem] bottom-[5px] hidden md:block z-10 rounded-lg shadow-xl bg-slate-50 dark:bg-slate-800'>
+        <AppNav />
+        <BookmarkList />
+        <footer className='flex flex-col'>
+          <Pagination count={count} />
+        </footer>
+      </div>
     </ParkDataProvider>
   );
 }
